@@ -1,0 +1,62 @@
+|||||||||||||||||||||||||||||||| passpattern |||||||||||||||||||||||||||||||||||
+||||||||||||||||||||||||| Last changed: 24 Mar 2017 |||||||||||||||||||||||||||||
+
+Contents:
+    1. Files
+    2. Requirements
+    3. Deployment
+    4. Usage
+    5. TODO
+
+1. Files:   
+/.../passpattern
+              |
+              |__ /static
+              |        |-- bootstrap.min.css
+              |__ /templates
+              |        |-- layout.html
+              |        |-- home.html
+              |        |-- register.html
+              |        |-- login.html
+              |        |-- _formhelpers.html
+              |-- passpattern.py
+              |-- requirements.txt
+              |-- README
+              |-- changelog
+
+2.  Requirements:   Required files are specified in file 'requirements.txt'
+        To install required python packages use following command:
+            $ pip install -r requirements.txt
+        It is recommended to create a virtual environment first.
+
+3.  Deployment: Steps for deploying to the local server.
+        
+        > cd into passpattern directory (where 'passpattern.py' file is located)
+        > Create database table:
+            $ python 
+            >>> from passpattern import db
+            >>> db.create_all()
+            >>> exit()
+          Here sqlite database is used. A file named 'users.db' will be created.
+
+        > Specify the flask app with following command:
+            $ export FLASK_APP=passpattern.py
+        > Run flask app:
+            $ flask run
+        > To stop type Ctrl-C
+
+4.  Usage:      Load the address shown on terminal in the browser, 
+        e.g. http://127.0.0.1:5000.
+            In registration page provide a pattern in the password field 
+        according to the 8x8 grid shown. A simple example pattern would be 
+        "c11c12c88c78". Whitespaces are allowed and will be stripped before 
+        processing the pattern.
+            After successful registration the user is redirected to the 
+        homepage. From there go to the login page and input the symbols from 
+        the randomly generated grid according to the pattern provided 
+        during registration.
+
+5.  TODO:       
+        a.  Improve grid generated on html page
+        b.  Find how to secure the pattern stored in the database
+        c.  Find what other issues need to be addressed

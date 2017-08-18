@@ -1,0 +1,6 @@
+Flask==0.12
+Flask_Bcrypt==0.7.1
+Flask_SQLAlchemy==2.2
+Flask_WTF==0.14.2
+SQLAlchemy==1.1.6
+WTForms==2.1

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Home page{% endblock %}
+
+{% block content %}
+   {% if session.logged_in %}
+      <p>Home page of <em>{{ session['username'] }}</em></p>
+      <p><a href="{{ url_for('logout') }}">Log out</a></p>
+   {% else %}
+      <div class="row">
+         <a href="{{ url_for('login') }}" class="col-xs-6 text-right">Log in</a>
+         <a href="{{ url_for('register') }}" class="col-xs-6">Register</a>
+      </div>
+   {% endif %}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "layout.html" %}
+
+{% block title %}Login page{% endblock %}
+
+{% block style %}
+   td {
+      font-family: "Monaco", monospace;
+      font-size: 14pt;
+   }
+
+   td:hover {
+      background: lightgrey;
+   }
+{% endblock %}
+
+{% block script %}
+   setTimeout(function() {
+      alert("Changing symbol grid");
+      location.reload();
+   }, 30*1000);
+{% endblock %}
+
+{% block content %}
+   {% if session.logged_in %}
+      <div class="alert alert-info">Already logged in as <em><strong>{{ session['username'] }}</strong></em></div>
+   {% else %}
+      <form action="{{ url_for('login') }}" method="post" class="form-horizontal">
+         {{ render_field(form.username, class="form-control") }}
+         {{ render_field(form.password, class="form-control") }}
+         {{ form.csrf_token }}
+
+         <table  class="table table-bordered">
+         {% for row in pattern[2] %}
+            <tr>
+            {% for symbol in row %}
+               <td class="text-center">{{ symbol }}</td>
+            {% endfor %}
+            </tr>
+         {% endfor %}
+         </table>
+
+         <input type="submit" name="Log in" class="btn btn-primary center-block" />
+         <a href="{{ url_for('register') }}" class="center-block text-center">New user?</a>
+      </form>
+   {% endif %}
+{% endblock %}

@@ -1,0 +1,6 @@
+0324:	1. Improved grid visual
+		2. Auto refreshing of login page each 30 sec
+		3. Allowed duplicate symbols in grid and removed o, O, -, _
+		4. Added strict checks on patern provided in registration
+
+0310:	1.	First complete version
